@@ -1,0 +1,28 @@
+{
+    "common": {
+        "select_lang": "Ngôn ngữ"
+    },
+    "hello": {
+        "title": "Xin chào" 
+    },
+    "slider": {
+        "home": "Trang chủ",
+        "admin": "Quản lý Posts",
+        "contacts": "Liên Hệ",
+        "logout": "Đăng xuất"
+    },
+    "content": {
+        "comment": "Bình Luận",
+        "viewDetails": "Xem chi tiết"
+    },
+    "adminPage":{
+        "img": "Ảnh",
+        "title": "Tiêu đề",
+        "body": "Nội dung",
+        "options": "Tùy chọn",
+        "delete": "Xóa bài viết",
+        "update": "Sửa bài viết",
+        "add": "Thêm bài viết",
+        "admin": "Quản lý bài viết"
+    }
+}

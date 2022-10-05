@@ -1,0 +1,28 @@
+{
+    "common": {
+        "select_lang": "Languages"
+    },
+    "hello": {
+        "title": "Hello" 
+    },
+    "slider": {
+        "home": "Home",
+        "admin": "Admin",
+        "contacts": "Contacts",
+        "logout": "Log Out"
+    },
+    "content": {
+        "comment": "Comment",
+        "viewDetails": "View Details"
+    },
+    "adminPage":{
+        "img": "Image",
+        "title": "Title",
+        "body": "Body",
+        "options": "Options",
+        "delete": "Delete Posts",
+        "update": "Update Posts",
+        "add": "Add Posts",
+        "admin": "ADMIN"
+    }
+}

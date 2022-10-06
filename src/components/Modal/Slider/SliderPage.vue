@@ -8,36 +8,36 @@
         <div class="slider-menu">
             <ul class="menu-list">
                 <router-link style="width: 100%;" to="/">
-                <li class="menu-item" active-class="active" extra>
-                        <home-outlined class="menu-item_icon"/>
-                    <span class="menu-item_title">{{$t("slider.home")}}</span>
-                </li>
+                    <li class="menu-item" active-class="active" extra>
+                        <home-outlined class="menu-item_icon" />
+                        <span class="menu-item_title">{{$t("slider.home")}}</span>
+                    </li>
                 </router-link>
 
                 <router-link style="width: 100%;" to="/admin">
-                <li class="menu-item" active-class="active" exact>
-                    <user-outlined class="menu-item_icon"/>
-                    <span class="menu-item_title">{{$t("slider.admin")}}</span>
-                </li>
+                    <li class="menu-item" active-class="active" exact>
+                        <user-outlined class="menu-item_icon" />
+                        <span class="menu-item_title">{{$t("slider.admin")}}</span>
+                    </li>
                 </router-link>
 
                 <li class="menu-item">
-                    <contacts-outlined class="menu-item_icon"/>
+                    <contacts-outlined class="menu-item_icon" />
                     <span class="menu-item_title">{{$t("slider.contacts")}}</span>
                 </li>
 
                 <li class="menu-item">
-                    <home-outlined class="menu-item_icon"/>
+                    <home-outlined class="menu-item_icon" />
                     <span class="menu-item_title">{{$t("slider.home")}}</span>
                 </li>
 
                 <li class="menu-item">
-                    <home-outlined class="menu-item_icon"/>
+                    <home-outlined class="menu-item_icon" />
                     <span class="menu-item_title">{{$t("slider.home")}}</span>
                 </li>
 
                 <li class="menu-item">
-                    <logout-outlined class="menu-item_icon"/>
+                    <logout-outlined class="menu-item_icon" />
                     <span class="menu-item_title">{{$t("slider.logout")}}</span>
                 </li>
             </ul>
@@ -63,6 +63,7 @@ ul {
 li {
     list-style-type: none;
 }
+
 .slider {
     background: #fff;
     padding: 20px 20px 40px 40px;
@@ -113,6 +114,7 @@ li {
     justify-content: flex-end;
     align-items: flex-end;
 }
+
 .menu-item {
     width: 100%;
     font-size: 20px;
@@ -143,7 +145,7 @@ li {
     color: #333;
 }
 
-.menu-item_title{
+.menu-item_title {
     margin-left: 5px;
 }
 
@@ -153,12 +155,12 @@ li {
     }
 
     .slider-header span {
-    display: none;
-}
+        display: none;
+    }
 }
 
-@media (max-width: 586px){
-    .slider{
+@media (max-width: 586px) {
+    .slider {
         padding: 20px 0;
     }
 }

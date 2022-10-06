@@ -13,7 +13,7 @@ import HeaderPage from './components/Modal/Header/HeaderPage.vue';
 
 <style scoped>
 .page {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 </style>

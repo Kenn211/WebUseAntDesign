@@ -1,14 +1,14 @@
 <template>
-    <appstore-add-outlined style="background: blanchedalmond; padding: 15px 15px; border-radius: 50%;" @click="showModal()" />
+    <appstore-add-outlined style="background: blanchedalmond; padding: 15px 15px; border-radius: 50%;"
+        @click="showModal()" />
     <a-modal v-model:visible="visible" title="Add Posts" @click="handleAddPosts()">
         <template #footer>
             <a-button key="back" @click="handleCancel">Cancle</a-button>
             <a-button key="submit" type="primary" :loading="loading" @click="handleAddPosts()">Submit</a-button>
         </template>
-        <div>
+        <div class="addInput">
             <span>Title</span>
-            <a-textarea v-model:value="dataAddPosts.title" placeholder="Title Post"
-                auto-size />
+            <a-textarea v-model:value="dataAddPosts.title" placeholder="Title Post" auto-size />
 
             <span>Body</span>
             <a-textarea v-model:value="dataAddPosts.body" placeholder="Body Post" :rows="4" />
@@ -35,6 +35,7 @@ const handleCancel = () => {
 let props = defineProps<{
     getPostsAdmin: Posts[]
 }>();
+
 
 //Handle add Post
 const dataAddPosts = reactive<Posts>({
@@ -78,5 +79,14 @@ async function handleAddPosts() {
 </script>
 
 <style scoped>
+.addInput span {
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+}
 
+.addInput span:nth-child(3) {
+    margin-top: 2rem;
+}
 </style>

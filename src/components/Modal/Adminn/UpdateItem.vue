@@ -1,7 +1,7 @@
 <template>
     <a-menu-item @click="showModal()" key="1">
         <UserOutlined /> {{$t("adminPage.update")}}
-        <a-modal  v-model:visible="visible" title="Update Posts">
+        <a-modal v-model:visible="visible" title="Update Posts">
             <template #footer>
                 <a-button key="back" @click="handleCancel">Cancle</a-button>
                 <a-button key="submit" type="primary" :loading="loading" @click="handleUpdatePosts()">Submit</a-button>
@@ -19,19 +19,26 @@
 
 <script setup lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
-import { ref, defineProps, reactive } from 'vue';
+import { ref, defineProps, reactive, defineEmits } from 'vue';
 import { Posts } from '../../Interfaces/interfaces';
 import { PostsRepository } from '../../Repositories/Repositories';
+
 const visible = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const showModal = () => {
     visible.value = true;
 };
 
+//Emit data Update
+const emit = defineEmits<{
+    (e: "eventUpdate", data: Posts): void
+}>();
+
 const props = defineProps<{
     itemUpdate: Posts
 }>();
-console.log(props.itemUpdate)
+
+//Handle Update Posts
 let dataUpdate = reactive<Posts>({
     userID: props.itemUpdate.userID,
     id: props.itemUpdate.id,
@@ -51,6 +58,10 @@ async function handleUpdatePosts() {
                 title: dataUpdate.title
             })
         }, 2000);
+        const dataEmit = {
+            ...dataUpdate
+        }
+        emit("eventUpdate", dataEmit);
     } catch (error) {
         console.log(error);
     }
@@ -64,17 +75,18 @@ const handleCancel = () => {
 </script>
 
 <style scoped>
-    .ant-modal-header{
+.ant-modal-header {
     background-color: blanchedalmond;
 }
-.updateInput span{
+
+.updateInput span {
     font-size: 15px;
     font-weight: bold;
     display: block;
     margin-bottom: 0.2rem;
 }
 
-.updateInput span:nth-child(3){
+.updateInput span:nth-child(3) {
     margin-top: 2rem;
 }
 </style>

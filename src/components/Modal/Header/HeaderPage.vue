@@ -21,10 +21,11 @@ const focus = () => {
     console.log('focus');
 };
 
+//change Language
 const handleChange = (value: string) => {
-    if(value === 'En'){
+    if (value === 'En') {
         i18n.global.locale = 'en';
-    }else {
+    } else {
         i18n.global.locale = 'vn';
     }
 };
@@ -60,14 +61,15 @@ const handleChange = (value: string) => {
     height: 2rem;
     outline: pink;
 }
-@media (max-width: 352px){
-    .header-title{
-        display: none;
+
+@media (max-width: 568px) {
+    .header-title {
+        font-size: 1rem;
     }
 }
 
-@media (width <= 183px){
-    .header-lang{
+@media (width <=183px) {
+    .header-lang {
         display: none;
     }
 }

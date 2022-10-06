@@ -43,6 +43,7 @@ import { PostsRepository } from '../Repositories/Repositories';
 const {
     params: { idPosts },
 } = useRoute();
+
 //Get API products
 const listDetailsPosts = ref<Posts>({
     userID: 1,

@@ -22,17 +22,17 @@
                                 <img src="https://img.pikbest.com/backgrounds/20190911/green-summer-watercolor-drawing-landscape-background_2761434.jpg!c1024wm0"
                                     alt="">
                             </td>
-                            <td style="overflow-wrap: break-word;">
+                            <td>
                                 {{item.title}}
                             </td>
-                            <td style="overflow-wrap: break-word;">
+                            <td>
                                 {{item.body}}
                             </td>
                             <td>
                                 <a-dropdown>
                                     <template #overlay>
                                         <a-menu>
-                                            <UpdateItem :itemUpdate="item"></UpdateItem>
+                                            <UpdateItem @eventUpdate="eventUpdate" :itemUpdate="item"></UpdateItem>
                                             <a-menu-item @click="handleDeleteItemPosts(item.id)" key="2">
                                                 <delete-outlined /> {{$t("adminPage.delete")}}
                                             </a-menu-item>
@@ -47,9 +47,13 @@
                     </tbody>
                 </table>
             </div>
-            <a-affix style="z-index: 100;" :offset-top="top">
-                <AddItem @click="top += 10" type="primary" :getPostsAdmin="getPostsAdmin"></AddItem>
-            </a-affix>
+
+            <div>
+                <a-affix :offset-bottom="bottom">
+                    <AddItem @eventEmit="eventUpdate" type="primary" :getPostsAdmin="getPostsAdmin"></AddItem>
+                </a-affix>
+            </div>
+
         </div>
     </div>
 </template>
@@ -63,8 +67,9 @@ import UpdateItem from '../Modal/Adminn/UpdateItem.vue';
 import AddItem from '../Modal/Adminn/AddItem.vue';
 
 
-const top = ref<number>(100);
+const bottom = ref<number>(100);
 
+//get Posts Admin
 let getPostsAdmin = ref<Posts[]>([]);
 (async () => {
     const res = await PostsRepository.getPosts();
@@ -86,6 +91,17 @@ async function handleDeleteItemPosts(id: number) {
         console.log(error);
     }
 }
+
+//EventUpdate item
+function eventUpdate(data: Posts) {
+    function findIdData(findId: Posts) {
+        return findId.id === data.id;
+    }
+    const findId = getPostsAdmin.value.indexOf(
+        Object(getPostsAdmin.value.find(findIdData))
+    );
+    getPostsAdmin.value[findId] = data;
+}
 </script>
 
 <style scoped>
@@ -106,9 +122,7 @@ async function handleDeleteItemPosts(id: number) {
     padding-left: 2rem;
 }
 
-@media (width: 568px){
-    
-}
+@media (width: 568px) {}
 
 .admin-list-title {
     position: relative;
@@ -156,6 +170,20 @@ tbody tr td:nth-child(2) img {
 
 tbody tr td:nth-child(3) {
     font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tbody tr td:nth-child(4) {
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 tbody tr td:last-child {

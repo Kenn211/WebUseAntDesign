@@ -93,7 +93,7 @@ import { ref } from 'vue';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Comments } from "../../Interfaces/interfaces";
 import { useRoute } from "vue-router";
-import { CommentsRepository} from "../../Repositories/Repositories";
+import { CommentsRepository } from "../../Repositories/Repositories";
 dayjs.extend(relativeTime);
 
 
@@ -135,7 +135,7 @@ const getAllComments = ref<Comments[]>([]);
         const res = await CommentsRepository.getAllComments()
         getAllComments.value = res.data;
     } catch (error) {
-       console.log(error); 
+        console.log(error);
     }
 })();
 
@@ -147,7 +147,7 @@ async function handleAddComments(item: Comments) {
         const maxIdComments = Math.max.apply(Math, idArrComments);
         const dataComment: Comments = {
             postId: item.postId,
-            id: maxIdComments  + 1,
+            id: maxIdComments + 1,
             email: 'NVApewpew@gmail.com',
             body: commentsBox.value,
             name: 'Vanh'
@@ -157,7 +157,7 @@ async function handleAddComments(item: Comments) {
         } else {
             commentsBox.value = "";
             getComments.value.unshift(dataComment);
-            await CommentsRepository.addComments({...dataComment});
+            await CommentsRepository.addComments({ ...dataComment });
         }
     } catch (error) {
         console.log(error);
@@ -210,8 +210,8 @@ async function handleAddComments(item: Comments) {
     margin-left: 2rem;
 }
 
-@media (width <= 586px){
-    .cmt-input-box{
+@media (width <=586px) {
+    .cmt-input-box {
         margin-left: 0;
     }
 }
